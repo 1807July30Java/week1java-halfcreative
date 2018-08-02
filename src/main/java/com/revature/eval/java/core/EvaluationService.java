@@ -31,7 +31,19 @@ public class EvaluationService {
 	 */
 	public String acronym(String phrase) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		//Here we go sam!
+		//Take the words, and split them
+		String[] wordsInPhrase = phrase.split("( |-|_)"); //regular expression to match space or - or underscore
+		//make an array of characters that is equal to the length of words in the phrase given
+		char[] letters = new char[wordsInPhrase.length];
+		//add the first letter of each word in the phrase to the array
+		for (int i = 0, j = 0; i<wordsInPhrase.length;i++,j++) {
+			letters[i] = Character.toUpperCase(wordsInPhrase[j].charAt(0));
+		}
+		//you can see what this does I HOPE
+		String acro = new String(letters);
+		//System.out.println(acro); testing! no longer needed
+		return acro;
 	}
 
 	/**
