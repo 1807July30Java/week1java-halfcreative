@@ -30,7 +30,6 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
 		//Here we go sam!
 		//Take the words, and split them
 		String[] wordsInPhrase = phrase.split("( |-|_)"); //regular expression to match space or - or underscore
