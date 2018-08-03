@@ -11,10 +11,10 @@ must implement:
 "Crossing them off as I go"-Sam
 
 * ~~Without using the StringBuilder or StringBuffer class, write a method that reverses a String.~~
-* Convert a phrase to its acronym.
-* Determine if a triangle is equilateral, isosceles, or scalene. 
-* Given a word, compute the scrabble score for that word.
-* Clean up user-entered phone numbers so that they can be sent SMS messages.
+* ~~Convert a phrase to its acronym.~~
+* ~~Determine if a triangle is equilateral, isosceles, or scalene.~~
+* ~~Given a word, compute the scrabble score for that word.~~
+* ~~Clean up user-entered phone numbers so that they can be sent SMS messages.~~
 * Given a phrase, count the occurrences of each word in that phrase.
 * Implement a binary search algorithm.
 * Implement a program that translates from English to Pig Latin.
