@@ -210,9 +210,20 @@ public class EvaluationService {
      * Note: As this exercise only deals with telephone numbers used in
      * NANP-countries, only 1 is considered a valid country code.
      */
-    public String cleanPhoneNumber(String string) {
-        // TODO Write an implementation for this method declaration
-        return null;
+    public String cleanPhoneNumber(String string)throws IllegalArgumentException{
+        //LAST ONE BOYS!!!!!!!!!!!!!!!!!!!!!!!! (UNTIL ITS NOT)
+    	
+    	String clean = string.replaceAll("[^0-9+]",""); //gets rid of any character thats not 0-9
+    	if(clean.length()<10) { //girl didnt give you enough digits bro
+    		throw new IllegalArgumentException();
+    	}
+    	if(clean.startsWith("1")) { //take country code if it has one, get rid of that bizness
+    		clean = clean.subSequence(1,clean.length()).toString();
+    	}
+    	if(clean.length()>10) { //girl gave you way too many digits bro
+    		throw new IllegalArgumentException();
+    	}
+        return clean;
     }
 
     /**
