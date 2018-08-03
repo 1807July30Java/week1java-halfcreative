@@ -10,7 +10,7 @@ must implement:
 
 "Crossing them off as I go"-Sam
 
-*~~Without using the StringBuilder or StringBuffer class, write a method that reverses a String.~~
+* ~~Without using the StringBuilder or StringBuffer class, write a method that reverses a String.~~
 * Convert a phrase to its acronym.
 * Determine if a triangle is equilateral, isosceles, or scalene. 
 * Given a word, compute the scrabble score for that word.
