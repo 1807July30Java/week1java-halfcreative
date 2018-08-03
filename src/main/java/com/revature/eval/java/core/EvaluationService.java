@@ -96,18 +96,28 @@ public class EvaluationService {
         }
 
         public boolean isEquilateral() {
-            // TODO Write an implementation for this method declaration
-            return false;
+        	if (this.sideOne == this.sideTwo && this.sideTwo == this.sideThree) {
+        		return true;
+        	}else {
+        		return false;
+        	}
         }
 
         public boolean isIsosceles() {
-            // TODO Write an implementation for this method declaration
-            return false;
+            if(this.sideOne == this.sideTwo || this.sideOne == this.sideThree || this.sideTwo == this.sideThree){
+            	return true;
+            } else {
+            	return false;
+            }
         }
 
         public boolean isScalene() {
-            // TODO Write an implementation for this method declaration
-            return false;
+        	// we could just check if its neither a scalene or isoscelese by the rules given but hey, lets be legit
+            if(this.sideOne != this.sideTwo && this.sideOne != this.sideThree && this.sideTwo != this.sideThree) {
+            	return true;
+            }else {
+            	return false;
+            }
         }
 
     }
