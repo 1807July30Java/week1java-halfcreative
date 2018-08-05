@@ -422,13 +422,16 @@ public class EvaluationService {
 	public List<Long> calculatePrimeFactorsOf(long l) {
 		/*
 		 * Forgot how to find prime factors so searched "how to find prime factors" Here
-		 * are the instructions I followed :
-		 * 1) While the number is divisible by 2, print 2 and divide the number by 2. 
-		 * 2) Divide the number by every other number that divides into it evenly (without a remainder)
-		 * 	  starting at 3 until you reach the square root of the number. 
-		 * 3) If the number is a prime number and is greater than 2, then the above steps 
-		 *    will not reduce the repeatedly divided number to 1 by above two steps.
-		 *    if this is the case, add the number if it's bigger than two
+		 * are the instructions I followed : 
+		 * STEP 1) While the number is divisible by 2,
+		 * print 2 and divide the number by 2. 
+		 * STEP 2) Divide the number by every other
+		 * number that divides into it evenly (without a remainder) starting at 3 until
+		 * you reach the square root of the number. 
+		 * STEP 3) If the number is a prime number
+		 * and is greater than 2, then the above steps will not reduce the repeatedly
+		 * divided number to 1 by above two steps. if this is the case, add the number
+		 * if it's bigger than two
 		 */
 		long num = l;
 		List<Long> listOfPrimes = new ArrayList<Long>();
@@ -437,7 +440,7 @@ public class EvaluationService {
 			listOfPrimes.add((long) 2);
 			num /= 2;
 		}
-		//STEP 2
+		// STEP 2
 		for (int i = 3; i <= Math.sqrt(num); i += 2) {
 			while (num % i == 0) {
 				listOfPrimes.add((long) i);
@@ -486,8 +489,48 @@ public class EvaluationService {
 		}
 
 		public String rotate(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+			// We did this in javaScript, lets do it again.
+			char[] test = { 'a', 'z', 'A', 'Z' };
+			// Finding Out CharCodes
+			System.out.println("code point for  a = " + Character.codePointAt(test, 0));
+			System.out.println("code point for  A = " + Character.codePointAt(test, 2));
+			System.out.println("code point for  z = " + Character.codePointAt(test, 1));
+			System.out.println("code point for  Z = " + Character.codePointAt(test, 3));
+			System.out.println("97 to char = " + String.valueOf(Character.toChars(97)));
+			System.out.println("122 to char = " + String.valueOf(Character.toChars(122)));
+			System.out.println("65 to char = " + String.valueOf(Character.toChars(65)));
+			System.out.println("90 to char = " + String.valueOf(Character.toChars(90)));
+			char[] charizard = string.toCharArray();
+			for (int i = 0; i < charizard.length; i++) {
+				// capital letters
+				if (Character.codePointAt(charizard, i) >= 65 && Character.codePointAt(charizard, i) <= 90) {
+					System.out.println("Original Character = " + charizard[i]);
+					if (Character.codePointAt(charizard, i) + this.key >90) {
+						int overflow = (Character.codePointAt(charizard, i) + this.key)- 90;
+						charizard[i] = Character.toChars(64 + overflow)[0];
+						System.out.println("After Change = " + charizard[i]);
+						
+					} else {
+						charizard[i] = Character.toChars(Character.codePointAt(charizard,i) + this.key)[0];
+						System.out.println("After Change = " + charizard[i]);
+					}
+				}
+				// lowercase letters
+				if (Character.codePointAt(charizard, i) >= 97 && Character.codePointAt(charizard, i) <= 122) {
+					System.out.println("Original Character = " + charizard[i]);
+					if (Character.codePointAt(charizard, i) + this.key > 122) {
+						int overflow = (Character.codePointAt(charizard, i)+ this.key) - 122;
+						charizard[i] = Character.toChars(96+overflow)[0];
+						System.out.println("After Change = " + charizard[i]);
+						
+					} else {
+						charizard[i] = Character.toChars(Character.codePointAt(charizard,i) + this.key)[0];
+						System.out.println("After Change = " + charizard[i]);
+					}
+				}
+			}
+			String ans = new String(charizard);
+			return ans;
 		}
 
 	}
