@@ -331,7 +331,7 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String toPigLatin(String string) {
-		// TODO Write an implementation for this method declaration
+		//oink oink
 		String[] words = string.split(" ");
 		for (int i = 0; i < words.length; i++) {
 			do {
@@ -368,10 +368,10 @@ public class EvaluationService {
 			} while (words[i].charAt(0) != 'a' && words[i].charAt(0) != 'e' && words[i].charAt(0) != 'i'
 					&& words[i].charAt(0) != 'o' && words[i].charAt(0) != 'u');
 			words[i] = words[i] + "ay";
-			System.out.println(words[i]);
+			//System.out.println(words[i]);
 
 		}
-		System.out.println(String.join(" ", words));
+		//System.out.println(String.join(" ", words));
 		return String.join(" ", words);
 	}
 
@@ -391,8 +391,22 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isArmstrongNumber(int input) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		String[] digitsAsStrings = String.valueOf(input).split("");
+		int[] digits = new int[digitsAsStrings.length];
+		for(int i=0, j=digitsAsStrings.length-1; i<digitsAsStrings.length; i++, j--) {
+			digits[j] = Integer.parseInt(digitsAsStrings[i]);
+		}
+		int sumOfDigitsToPower=0;
+		for (int k=0;k<digits.length;k++) {
+			sumOfDigitsToPower += (Math.pow(digits[k], digits.length));
+		}
+		System.out.println(sumOfDigitsToPower);
+		if(sumOfDigitsToPower==input) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	/**
