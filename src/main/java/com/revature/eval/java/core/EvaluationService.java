@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -331,15 +332,15 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String toPigLatin(String string) {
-		//oink oink
+		// oink oink
 		String[] words = string.split(" ");
 		for (int i = 0; i < words.length; i++) {
 			do {
 				switch (words[i].charAt(0)) {
 				case 'q':
-					if(words[i].charAt(1)=='u') {
+					if (words[i].charAt(1) == 'u') {
 						String wordy = words[i].substring(2);
-						words[i] = wordy + words[i].charAt(0)+words[i].charAt(1);
+						words[i] = wordy + words[i].charAt(0) + words[i].charAt(1);
 						break;
 					}
 				case 'b':
@@ -368,10 +369,10 @@ public class EvaluationService {
 			} while (words[i].charAt(0) != 'a' && words[i].charAt(0) != 'e' && words[i].charAt(0) != 'i'
 					&& words[i].charAt(0) != 'o' && words[i].charAt(0) != 'u');
 			words[i] = words[i] + "ay";
-			//System.out.println(words[i]);
+			// System.out.println(words[i]);
 
 		}
-		//System.out.println(String.join(" ", words));
+		// System.out.println(String.join(" ", words));
 		return String.join(" ", words);
 	}
 
@@ -393,18 +394,17 @@ public class EvaluationService {
 	public boolean isArmstrongNumber(int input) {
 		String[] digitsAsStrings = String.valueOf(input).split("");
 		int[] digits = new int[digitsAsStrings.length];
-		for(int i=0, j=digitsAsStrings.length-1; i<digitsAsStrings.length; i++, j--) {
+		for (int i = 0, j = digitsAsStrings.length - 1; i < digitsAsStrings.length; i++, j--) {
 			digits[j] = Integer.parseInt(digitsAsStrings[i]);
 		}
-		int sumOfDigitsToPower=0;
-		for (int k=0;k<digits.length;k++) {
+		int sumOfDigitsToPower = 0;
+		for (int k = 0; k < digits.length; k++) {
 			sumOfDigitsToPower += (Math.pow(digits[k], digits.length));
 		}
 		System.out.println(sumOfDigitsToPower);
-		if(sumOfDigitsToPower==input) {
+		if (sumOfDigitsToPower == input) {
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
@@ -420,8 +420,35 @@ public class EvaluationService {
 	 * @return
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		/*
+		 * Forgot how to find prime factors so searched "how to find prime factors" Here
+		 * are the instructions I followed :
+		 * 1) While the number is divisible by 2, print 2 and divide the number by 2. 
+		 * 2) Divide the number by every other number that divides into it evenly (without a remainder)
+		 * 	  starting at 3 until you reach the square root of the number. 
+		 * 3) If the number is a prime number and is greater than 2, then the above steps 
+		 *    will not reduce the repeatedly divided number to 1 by above two steps.
+		 *    if this is the case, add the number if it's bigger than two
+		 */
+		long num = l;
+		List<Long> listOfPrimes = new ArrayList<Long>();
+		// STEP 1
+		while (num % 2 == 0) {
+			listOfPrimes.add((long) 2);
+			num /= 2;
+		}
+		//STEP 2
+		for (int i = 3; i <= Math.sqrt(num); i += 2) {
+			while (num % i == 0) {
+				listOfPrimes.add((long) i);
+				num /= i;
+			}
+		}
+		// STEP 3
+		if (num > 2) {
+			listOfPrimes.add(num);
+		}
+		return listOfPrimes;
 	}
 
 	/**
