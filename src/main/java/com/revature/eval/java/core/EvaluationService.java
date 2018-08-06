@@ -670,7 +670,6 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getSumOfMultiples(int i, int[] set) {
-		// TODO Write an implementation for this method declaration
 		// you got this buddy
 		ArrayList<Integer> multiples = new ArrayList<Integer>();
 		for (int l = 0; l < set.length; l++) {
@@ -734,8 +733,44 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isLuhnValid(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		//Here we go my man
+		
+		//this is the initial check for nonDigits
+		String nonDigit = string.replaceAll("[^a-zA-z\\-]", "");
+		if (nonDigit.length()!=0) {
+		//	System.out.println("NO LETTERS PLZ");
+			return false;
+		}
+		//Clean the input now
+		String clean = string.replaceAll("\\D", "");
+		//System.out.println(clean);
+		//make array of digits
+		String[] digitsAsString = clean.split("");
+		//System.out.println(Arrays.toString(digitsAsString));
+		int[] digits = new int[digitsAsString.length];
+		for (int i=0; i<digits.length; i++) {
+			digits[i]= Integer.parseInt(digitsAsString[i]);
+		}
+		//begin the steps
+		for (int j=1; j<digits.length;j+=2) {
+			if (digits[j]*2>9) {
+				digits[j]=(digits[j]*2)-9;
+			}
+			else {
+				digits[j]=(digits[j]*2);
+			}
+		}
+		int sum = 0;
+		for (int digit : digits) {
+			sum += digit;
+		}
+		//System.out.print(sum);
+		if (sum%10==0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	/**
@@ -766,7 +801,10 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int solveWordProblem(String string) {
-		// TODO Write an implementation for this method declaration
+		//Bring it on!
+		String digitsWithCommas = String.replaceAll("\\D", ',');
+		String[] digitsAsStringArr = digitsWithCommas.split(",");
+		
 		return 0;
 	}
 
