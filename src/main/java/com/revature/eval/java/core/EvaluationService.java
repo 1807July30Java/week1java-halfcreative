@@ -406,7 +406,7 @@ public class EvaluationService {
 		for (int k = 0; k < digits.length; k++) {
 			sumOfDigitsToPower += (Math.pow(digits[k], digits.length));
 		}
-		//System.out.println(sumOfDigitsToPower);
+		// System.out.println(sumOfDigitsToPower);
 		if (sumOfDigitsToPower == input) {
 			return true;
 		} else {
@@ -493,43 +493,43 @@ public class EvaluationService {
 		public String rotate(String string) {
 			// We did this in javaScript, lets do it again.
 			/*
-			char[] test = { 'a', 'z', 'A', 'Z' };
-			// Finding Out CharCodes
-			System.out.println("code point for  a = " + Character.codePointAt(test, 0));
-			System.out.println("code point for  A = " + Character.codePointAt(test, 2));
-			System.out.println("code point for  z = " + Character.codePointAt(test, 1));
-			System.out.println("code point for  Z = " + Character.codePointAt(test, 3));
-			System.out.println("97 to char = " + String.valueOf(Character.toChars(97)));
-			System.out.println("122 to char = " + String.valueOf(Character.toChars(122)));
-			System.out.println("65 to char = " + String.valueOf(Character.toChars(65)));
-			System.out.println("90 to char = " + String.valueOf(Character.toChars(90)));
-			*/
+			 * char[] test = { 'a', 'z', 'A', 'Z' }; // Finding Out CharCodes
+			 * System.out.println("code point for  a = " + Character.codePointAt(test, 0));
+			 * System.out.println("code point for  A = " + Character.codePointAt(test, 2));
+			 * System.out.println("code point for  z = " + Character.codePointAt(test, 1));
+			 * System.out.println("code point for  Z = " + Character.codePointAt(test, 3));
+			 * System.out.println("97 to char = " + String.valueOf(Character.toChars(97)));
+			 * System.out.println("122 to char = " +
+			 * String.valueOf(Character.toChars(122))); System.out.println("65 to char = " +
+			 * String.valueOf(Character.toChars(65))); System.out.println("90 to char = " +
+			 * String.valueOf(Character.toChars(90)));
+			 */
 			char[] charizard = string.toCharArray();
 			for (int i = 0; i < charizard.length; i++) {
 				// capital letters
 				if (Character.codePointAt(charizard, i) >= 65 && Character.codePointAt(charizard, i) <= 90) {
-					//System.out.println("Original Character = " + charizard[i]);
+					// System.out.println("Original Character = " + charizard[i]);
 					if (Character.codePointAt(charizard, i) + this.key > 90) {
 						int overflow = (Character.codePointAt(charizard, i) + this.key) - 90;
 						charizard[i] = Character.toChars(64 + overflow)[0];
-						//System.out.println("After Change = " + charizard[i]);
+						// System.out.println("After Change = " + charizard[i]);
 
 					} else {
 						charizard[i] = Character.toChars(Character.codePointAt(charizard, i) + this.key)[0];
-						//System.out.println("After Change = " + charizard[i]);
+						// System.out.println("After Change = " + charizard[i]);
 					}
 				}
 				// lowercase letters
 				if (Character.codePointAt(charizard, i) >= 97 && Character.codePointAt(charizard, i) <= 122) {
-					//System.out.println("Original Character = " + charizard[i]);
+					// System.out.println("Original Character = " + charizard[i]);
 					if (Character.codePointAt(charizard, i) + this.key > 122) {
 						int overflow = (Character.codePointAt(charizard, i) + this.key) - 122;
 						charizard[i] = Character.toChars(96 + overflow)[0];
-						//System.out.println("After Change = " + charizard[i]);
+						// System.out.println("After Change = " + charizard[i]);
 
 					} else {
 						charizard[i] = Character.toChars(Character.codePointAt(charizard, i) + this.key)[0];
-						//System.out.println("After Change = " + charizard[i]);
+						// System.out.println("After Change = " + charizard[i]);
 					}
 				}
 			}
@@ -646,8 +646,35 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isPangram(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		// keep it up
+		/*
+		 * Finding Out CharCodes System.out.println("code point for  a = " +
+		 * Character.codePointAt(test, 0)); System.out.println("code point for  A = " +
+		 * Character.codePointAt(test, 2)); System.out.println("code point for  z = " +
+		 * Character.codePointAt(test, 1)); System.out.println("code point for  Z = " +
+		 * Character.codePointAt(test, 3)); System.out.println("97 to char = " +
+		 * String.valueOf(Character.toChars(97))); System.out.println("122 to char = " +
+		 * String.valueOf(Character.toChars(122))); System.out.println("65 to char = " +
+		 * String.valueOf(Character.toChars(65))); System.out.println("90 to char = " +
+		 * String.valueOf(Character.toChars(90)));
+		 */
+		String upperCase = string.toUpperCase();
+		String[] words = upperCase.split(" ");
+		for(int i = 65; i<91; i++) {
+			char letter = Character.toChars(i)[0];
+			int letterCount = 0;
+			for (String word:words) {
+				for (int j=0;j<word.length(); j++) {
+					if(letter==word.charAt(j)) {
+						letterCount +=1;
+					}
+				}
+			}
+			if (letterCount ==0) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -660,23 +687,22 @@ public class EvaluationService {
 	 */
 	public Temporal getGigasecondDate(Temporal given) {
 		// TODO Write an implementation for this method declaration
-		
+
 		if (given instanceof LocalDateTime) {
-			LocalDateTime DateWithTime = (LocalDateTime)given;
-			DateWithTime = DateWithTime.plusSeconds((long)1000000000);
+			LocalDateTime DateWithTime = (LocalDateTime) given;
+			DateWithTime = DateWithTime.plusSeconds((long) 1000000000);
+			return DateWithTime;
+		} else {
+			LocalDateTime DateWithTime = ((LocalDate) given).atTime(LocalTime.MIN);
+			DateWithTime = DateWithTime.plusSeconds((long) 1000000000);
 			return DateWithTime;
 		}
-		else {
-			LocalDateTime DateWithTime = ((LocalDate)given).atTime(LocalTime.MIN);
-			DateWithTime = DateWithTime.plusSeconds((long)1000000000);
-			return DateWithTime;
-		}
-		
-		//example input
-		//System.out.println(LocalDate.of(1959, Month.JULY, 19));
-		
-		//example output
-		//System.out.println(LocalDateTime.of(2009, Month.FEBRUARY, 19, 1, 46, 40));
+
+		// example input
+		// System.out.println(LocalDate.of(1959, Month.JULY, 19));
+
+		// example output
+		// System.out.println(LocalDateTime.of(2009, Month.FEBRUARY, 19, 1, 46, 40));
 	}
 
 	/**
@@ -756,42 +782,40 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isLuhnValid(String string) {
-		//Here we go my man
-		
-		//this is the initial check for nonDigits
+		// Here we go my man
+
+		// this is the initial check for nonDigits
 		String nonDigit = string.replaceAll("[^a-zA-z\\-]", "");
-		if (nonDigit.length()!=0) {
-		//	System.out.println("NO LETTERS PLZ");
+		if (nonDigit.length() != 0) {
+			// System.out.println("NO LETTERS PLZ");
 			return false;
 		}
-		//Clean the input now
+		// Clean the input now
 		String clean = string.replaceAll("\\D", "");
-		//System.out.println(clean);
-		//make array of digits
+		// System.out.println(clean);
+		// make array of digits
 		String[] digitsAsString = clean.split("");
-		//System.out.println(Arrays.toString(digitsAsString));
+		// System.out.println(Arrays.toString(digitsAsString));
 		int[] digits = new int[digitsAsString.length];
-		for (int i=0; i<digits.length; i++) {
-			digits[i]= Integer.parseInt(digitsAsString[i]);
+		for (int i = 0; i < digits.length; i++) {
+			digits[i] = Integer.parseInt(digitsAsString[i]);
 		}
-		//begin the steps
-		for (int j=1; j<digits.length;j+=2) {
-			if (digits[j]*2>9) {
-				digits[j]=(digits[j]*2)-9;
-			}
-			else {
-				digits[j]=(digits[j]*2);
+		// begin the steps
+		for (int j = 1; j < digits.length; j += 2) {
+			if (digits[j] * 2 > 9) {
+				digits[j] = (digits[j] * 2) - 9;
+			} else {
+				digits[j] = (digits[j] * 2);
 			}
 		}
 		int sum = 0;
 		for (int digit : digits) {
 			sum += digit;
 		}
-		//System.out.print(sum);
-		if (sum%10==0) {
+		// System.out.print(sum);
+		if (sum % 10 == 0) {
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
@@ -824,39 +848,34 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int solveWordProblem(String string) {
-		//Bring it on!
-		//the numbers
+		// Bring it on!
+		// the numbers
 		String noWords = string.replaceAll("[a-zA-z?]", " ");
 		Scanner sc = new Scanner(noWords);
 		String digitS1 = sc.next();
 		String digitS2 = sc.next();
 		sc.close();
-		//make them ints
+		// make them ints
 		int num1 = Integer.parseInt(digitS1);
 		int num2 = Integer.parseInt(digitS2);
-		//System.out.println(num1+" "+num2);
+		// System.out.println(num1+" "+num2);
 		int answer;
-		//the operator
+		// the operator
 		List<String> myList = new ArrayList<String>(Arrays.asList(string.split(" ")));
-		if(myList.contains("plus")) {
-			answer = num1+num2;
-			//System.out.println("adding "+num1+" by " + num2);
-		}
-		else if (myList.contains("minus")) {
-			answer = num1-num2;
-			//System.out.println("subtracting "+num1+" by " + num2);
-		}
-		else if (myList.contains("multiplied")) {
+		if (myList.contains("plus")) {
+			answer = num1 + num2;
+			// System.out.println("adding "+num1+" by " + num2);
+		} else if (myList.contains("minus")) {
+			answer = num1 - num2;
+			// System.out.println("subtracting "+num1+" by " + num2);
+		} else if (myList.contains("multiplied")) {
 			answer = num1 * num2;
-			//System.out.println("multiplying "+num1+" by " + num2);
-		}
-		else {
+			// System.out.println("multiplying "+num1+" by " + num2);
+		} else {
 			answer = num1 / num2;
-			//System.out.println("dividing "+num1+" by " + num2);
+			// System.out.println("dividing "+num1+" by " + num2);
 		}
-		
 
-		
 		return answer;
 	}
 
