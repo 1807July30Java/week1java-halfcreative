@@ -1,5 +1,9 @@
 package com.revature.eval.java.core;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Month;
 import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -656,7 +660,23 @@ public class EvaluationService {
 	 */
 	public Temporal getGigasecondDate(Temporal given) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		
+		if (given instanceof LocalDateTime) {
+			LocalDateTime DateWithTime = (LocalDateTime)given;
+			DateWithTime = DateWithTime.plusSeconds((long)1000000000);
+			return DateWithTime;
+		}
+		else {
+			LocalDateTime DateWithTime = ((LocalDate)given).atTime(LocalTime.MIN);
+			DateWithTime = DateWithTime.plusSeconds((long)1000000000);
+			return DateWithTime;
+		}
+		
+		//example input
+		//System.out.println(LocalDate.of(1959, Month.JULY, 19));
+		
+		//example output
+		//System.out.println(LocalDateTime.of(2009, Month.FEBRUARY, 19, 1, 46, 40));
 	}
 
 	/**
@@ -814,25 +834,25 @@ public class EvaluationService {
 		//make them ints
 		int num1 = Integer.parseInt(digitS1);
 		int num2 = Integer.parseInt(digitS2);
-		System.out.println(num1+" "+num2);
+		//System.out.println(num1+" "+num2);
 		int answer;
 		//the operator
 		List<String> myList = new ArrayList<String>(Arrays.asList(string.split(" ")));
 		if(myList.contains("plus")) {
 			answer = num1+num2;
-			System.out.println("adding "+num1+" by " + num2);
+			//System.out.println("adding "+num1+" by " + num2);
 		}
 		else if (myList.contains("minus")) {
 			answer = num1-num2;
-			System.out.println("subtracting "+num1+" by " + num2);
+			//System.out.println("subtracting "+num1+" by " + num2);
 		}
 		else if (myList.contains("multiplied")) {
 			answer = num1 * num2;
-			System.out.println("multiplying "+num1+" by " + num2);
+			//System.out.println("multiplying "+num1+" by " + num2);
 		}
 		else {
 			answer = num1 / num2;
-			System.out.println("dividing "+num1+" by " + num2);
+			//System.out.println("dividing "+num1+" by " + num2);
 		}
 		
 
