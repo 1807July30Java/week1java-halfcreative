@@ -16,7 +16,7 @@ must implement:
 * ~~Given a word, compute the scrabble score for that word.~~
 * ~~Clean up user-entered phone numbers so that they can be sent SMS messages.~~
 * ~~Given a phrase, count the occurrences of each word in that phrase.~~
-* Implement a binary search algorithm.
+* ~~Implement a binary search algorithm.~~
 * ~~Implement a program that translates from English to Pig Latin.~~
 * ~~An Armstrong number is a number that is the sum of its own digits each raised to the power of the number of digits.~~
 * ~~Compute the prime factors of a given natural number.~~
