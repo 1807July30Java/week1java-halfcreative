@@ -299,9 +299,9 @@ public class EvaluationService {
 		private List<T> sortedList;
 
 		public int indexOf(T t) {
-			//you got this my dude
+			// you got this my dude
 			Comparable ct = (Comparable) t;
-			
+
 			int lowerBound = 0;
 			int upperBound = this.sortedList.size() - 1;
 
@@ -565,31 +565,33 @@ public class EvaluationService {
 	 * @param i
 	 * @return
 	 */
-	public int calculateNthPrime(int i) throws IllegalArgumentException{
+	public int calculateNthPrime(int i) throws IllegalArgumentException {
 		// we got this
-		if (i==0) {
+		if (i == 0) {
 			throw new IllegalArgumentException();
 		}
-		int primesFound=0;
-		int numToCheck=2;
-		int lastPrime=0;
-		while (primesFound<i) {
+		int primesFound = 0;
+		int numToCheck = 2;
+		// int[] primeArr = new int[i];
+		ArrayList<Integer> primeArr = new ArrayList<Integer>();
+		while (primesFound < i) {
 			boolean isPrime = true;
-			for(int j = 2; j<Math.sqrt(numToCheck);j++) {
-				if(numToCheck%j==0) {
-					isPrime= false;
+
+			for (int j = 2; j < Math.sqrt(numToCheck); j++) {
+				if (numToCheck % j == 0) {
+					isPrime = false;
 				}
 			}
-			if(numToCheck==2) {
-				isPrime = true;
-			}
-			if(isPrime) {
-				lastPrime = numToCheck;
-				primesFound+= 1;
-				if(numToCheck>=3) {
-					numToCheck +=2;
-				}
-				else {
+			/*
+			 * if (!primeArr.isEmpty()) { for (int k : primeArr) { if (numToCheck % k == 0)
+			 * { isPrime = false; } } }
+			 */
+			if (isPrime || numToCheck == 2) {
+				primeArr.add(numToCheck);
+				primesFound += 1;
+				if (numToCheck >= 3) {
+					numToCheck += 2;
+				} else {
 					numToCheck += 1;
 				}
 				System.out.println(numToCheck);
