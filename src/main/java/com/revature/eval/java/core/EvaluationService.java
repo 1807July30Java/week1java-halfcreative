@@ -299,9 +299,23 @@ public class EvaluationService {
 		private List<T> sortedList;
 
 		public int indexOf(T t) {
-			// TODO Write an implementation for this method declaration
+			//you got this my dude
+			Comparable ct = (Comparable) t;
+			
+			int lowerBound = 0;
+			int upperBound = this.sortedList.size() - 1;
 
-			return 0;
+			int index = (int) Math.ceil(upperBound / 2);
+			while (!this.sortedList.get(index).equals(ct)) {
+				if (ct.compareTo(this.sortedList.get(index)) < 0) {
+					upperBound -= (int) Math.floor((upperBound - lowerBound) / 2.0);
+					index = lowerBound + (int) (upperBound - lowerBound) / 2;
+				} else {
+					lowerBound += (int) Math.ceil((upperBound - lowerBound) / 2.0);
+					index = lowerBound + (int) (upperBound - lowerBound) / 2;
+				}
+			}
+			return index;
 		}
 
 		public BinarySearch(List<T> sortedList) {
@@ -660,17 +674,17 @@ public class EvaluationService {
 		 */
 		String upperCase = string.toUpperCase();
 		String[] words = upperCase.split(" ");
-		for(int i = 65; i<91; i++) {
+		for (int i = 65; i < 91; i++) {
 			char letter = Character.toChars(i)[0];
 			int letterCount = 0;
-			for (String word:words) {
-				for (int j=0;j<word.length(); j++) {
-					if(letter==word.charAt(j)) {
-						letterCount +=1;
+			for (String word : words) {
+				for (int j = 0; j < word.length(); j++) {
+					if (letter == word.charAt(j)) {
+						letterCount += 1;
 					}
 				}
 			}
-			if (letterCount ==0) {
+			if (letterCount == 0) {
 				return false;
 			}
 		}
