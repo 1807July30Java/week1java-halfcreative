@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class EvaluationService {
 
@@ -401,7 +402,7 @@ public class EvaluationService {
 		for (int k = 0; k < digits.length; k++) {
 			sumOfDigitsToPower += (Math.pow(digits[k], digits.length));
 		}
-		System.out.println(sumOfDigitsToPower);
+		//System.out.println(sumOfDigitsToPower);
 		if (sumOfDigitsToPower == input) {
 			return true;
 		} else {
@@ -487,6 +488,7 @@ public class EvaluationService {
 
 		public String rotate(String string) {
 			// We did this in javaScript, lets do it again.
+			/*
 			char[] test = { 'a', 'z', 'A', 'Z' };
 			// Finding Out CharCodes
 			System.out.println("code point for  a = " + Character.codePointAt(test, 0));
@@ -497,32 +499,33 @@ public class EvaluationService {
 			System.out.println("122 to char = " + String.valueOf(Character.toChars(122)));
 			System.out.println("65 to char = " + String.valueOf(Character.toChars(65)));
 			System.out.println("90 to char = " + String.valueOf(Character.toChars(90)));
+			*/
 			char[] charizard = string.toCharArray();
 			for (int i = 0; i < charizard.length; i++) {
 				// capital letters
 				if (Character.codePointAt(charizard, i) >= 65 && Character.codePointAt(charizard, i) <= 90) {
-					System.out.println("Original Character = " + charizard[i]);
+					//System.out.println("Original Character = " + charizard[i]);
 					if (Character.codePointAt(charizard, i) + this.key > 90) {
 						int overflow = (Character.codePointAt(charizard, i) + this.key) - 90;
 						charizard[i] = Character.toChars(64 + overflow)[0];
-						System.out.println("After Change = " + charizard[i]);
+						//System.out.println("After Change = " + charizard[i]);
 
 					} else {
 						charizard[i] = Character.toChars(Character.codePointAt(charizard, i) + this.key)[0];
-						System.out.println("After Change = " + charizard[i]);
+						//System.out.println("After Change = " + charizard[i]);
 					}
 				}
 				// lowercase letters
 				if (Character.codePointAt(charizard, i) >= 97 && Character.codePointAt(charizard, i) <= 122) {
-					System.out.println("Original Character = " + charizard[i]);
+					//System.out.println("Original Character = " + charizard[i]);
 					if (Character.codePointAt(charizard, i) + this.key > 122) {
 						int overflow = (Character.codePointAt(charizard, i) + this.key) - 122;
 						charizard[i] = Character.toChars(96 + overflow)[0];
-						System.out.println("After Change = " + charizard[i]);
+						//System.out.println("After Change = " + charizard[i]);
 
 					} else {
 						charizard[i] = Character.toChars(Character.codePointAt(charizard, i) + this.key)[0];
-						System.out.println("After Change = " + charizard[i]);
+						//System.out.println("After Change = " + charizard[i]);
 					}
 				}
 			}
@@ -802,10 +805,39 @@ public class EvaluationService {
 	 */
 	public int solveWordProblem(String string) {
 		//Bring it on!
-		String digitsWithCommas = String.replaceAll("\\D", ',');
-		String[] digitsAsStringArr = digitsWithCommas.split(",");
+		//the numbers
+		String noWords = string.replaceAll("[a-zA-z?]", " ");
+		Scanner sc = new Scanner(noWords);
+		String digitS1 = sc.next();
+		String digitS2 = sc.next();
+		sc.close();
+		//make them ints
+		int num1 = Integer.parseInt(digitS1);
+		int num2 = Integer.parseInt(digitS2);
+		System.out.println(num1+" "+num2);
+		int answer;
+		//the operator
+		List<String> myList = new ArrayList<String>(Arrays.asList(string.split(" ")));
+		if(myList.contains("plus")) {
+			answer = num1+num2;
+			System.out.println("adding "+num1+" by " + num2);
+		}
+		else if (myList.contains("minus")) {
+			answer = num1-num2;
+			System.out.println("subtracting "+num1+" by " + num2);
+		}
+		else if (myList.contains("multiplied")) {
+			answer = num1 * num2;
+			System.out.println("multiplying "+num1+" by " + num2);
+		}
+		else {
+			answer = num1 / num2;
+			System.out.println("dividing "+num1+" by " + num2);
+		}
 		
-		return 0;
+
+		
+		return answer;
 	}
 
 }
