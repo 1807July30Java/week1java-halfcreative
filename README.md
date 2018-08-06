@@ -29,7 +29,7 @@ must implement:
 * Calculate the moment when someone has lived for 10^9 seconds.
 * ~~Given a number, find the sum of all the unique multiples of particular numbers up to but not including that number.~~
 * ~~Given a number determine whether or not it is valid per the Luhn formula.~~
-* Parse and evaluate simple math word problems returning the answer as an integer.
+* ~~Parse and evaluate simple math word problems returning the answer as an integer.~~
 
 ## Requirements
 * Git
