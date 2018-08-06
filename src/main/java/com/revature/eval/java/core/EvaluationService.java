@@ -422,16 +422,13 @@ public class EvaluationService {
 	public List<Long> calculatePrimeFactorsOf(long l) {
 		/*
 		 * Forgot how to find prime factors so searched "how to find prime factors" Here
-		 * are the instructions I followed : 
-		 * STEP 1) While the number is divisible by 2,
-		 * print 2 and divide the number by 2. 
-		 * STEP 2) Divide the number by every other
+		 * are the instructions I followed : STEP 1) While the number is divisible by 2,
+		 * print 2 and divide the number by 2. STEP 2) Divide the number by every other
 		 * number that divides into it evenly (without a remainder) starting at 3 until
-		 * you reach the square root of the number. 
-		 * STEP 3) If the number is a prime number
-		 * and is greater than 2, then the above steps will not reduce the repeatedly
-		 * divided number to 1 by above two steps. if this is the case, add the number
-		 * if it's bigger than two
+		 * you reach the square root of the number. STEP 3) If the number is a prime
+		 * number and is greater than 2, then the above steps will not reduce the
+		 * repeatedly divided number to 1 by above two steps. if this is the case, add
+		 * the number if it's bigger than two
 		 */
 		long num = l;
 		List<Long> listOfPrimes = new ArrayList<Long>();
@@ -505,13 +502,13 @@ public class EvaluationService {
 				// capital letters
 				if (Character.codePointAt(charizard, i) >= 65 && Character.codePointAt(charizard, i) <= 90) {
 					System.out.println("Original Character = " + charizard[i]);
-					if (Character.codePointAt(charizard, i) + this.key >90) {
-						int overflow = (Character.codePointAt(charizard, i) + this.key)- 90;
+					if (Character.codePointAt(charizard, i) + this.key > 90) {
+						int overflow = (Character.codePointAt(charizard, i) + this.key) - 90;
 						charizard[i] = Character.toChars(64 + overflow)[0];
 						System.out.println("After Change = " + charizard[i]);
-						
+
 					} else {
-						charizard[i] = Character.toChars(Character.codePointAt(charizard,i) + this.key)[0];
+						charizard[i] = Character.toChars(Character.codePointAt(charizard, i) + this.key)[0];
 						System.out.println("After Change = " + charizard[i]);
 					}
 				}
@@ -519,12 +516,12 @@ public class EvaluationService {
 				if (Character.codePointAt(charizard, i) >= 97 && Character.codePointAt(charizard, i) <= 122) {
 					System.out.println("Original Character = " + charizard[i]);
 					if (Character.codePointAt(charizard, i) + this.key > 122) {
-						int overflow = (Character.codePointAt(charizard, i)+ this.key) - 122;
-						charizard[i] = Character.toChars(96+overflow)[0];
+						int overflow = (Character.codePointAt(charizard, i) + this.key) - 122;
+						charizard[i] = Character.toChars(96 + overflow)[0];
 						System.out.println("After Change = " + charizard[i]);
-						
+
 					} else {
-						charizard[i] = Character.toChars(Character.codePointAt(charizard,i) + this.key)[0];
+						charizard[i] = Character.toChars(Character.codePointAt(charizard, i) + this.key)[0];
 						System.out.println("After Change = " + charizard[i]);
 					}
 				}
@@ -674,7 +671,30 @@ public class EvaluationService {
 	 */
 	public int getSumOfMultiples(int i, int[] set) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		// you got this buddy
+		ArrayList<Integer> multiples = new ArrayList<Integer>();
+		for (int l = 0; l < set.length; l++) {
+			int multiOfThis = set[l]; // this is one of the numbers to get multiples of
+			int multiplier = 1;
+			int multipleIteration = multiplier * multiOfThis;
+			while (multipleIteration < i) {
+				if (!multiples.contains(multipleIteration)) {
+					// System.out.println("Adding "+multipleIteration);
+					multiples.add(multipleIteration);
+					/*
+					 * Debugging code: for(int mul:multiples) { System.out.print(" "+ mul ); }
+					 * System.out.println();
+					 */
+				}
+				multiplier += 1;
+				multipleIteration = multiplier * multiOfThis;
+			}
+		}
+		int sumOfMults = 0;
+		for (int multiple : multiples) {
+			sumOfMults += multiple;
+		}
+		return sumOfMults;
 	}
 
 	/**
